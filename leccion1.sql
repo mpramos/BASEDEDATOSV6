@@ -1,5 +1,5 @@
 --! Ejercicio 1: Tareas
-
+--! SELECT
 --? 1. Encuentra el **`titulo`**de cada película.
 select titulo from movie;
 select titulo as titulo_pelicula from movie
