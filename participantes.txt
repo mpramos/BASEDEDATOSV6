@@ -5,7 +5,9 @@ Joel Jemio 3
 Fredy Alanoca 3
 
 2/09/2024
-Joel Jemio 1
-Jaime Sebastian 1
-Miguel Angel Condori 1
+Fredy Alanoca 2 3
+Joel Jemio 1  2 3
+Jaime Sebastian 1 2 
+Miguel Angel Condori 1 2 
+Jhosimar guerrero 3
 
