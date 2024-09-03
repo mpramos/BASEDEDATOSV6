@@ -56,19 +56,23 @@ VALUES
 create table empleados (
     role TEXT,
     Nombre TEXT,
+    Edificio TEXT,
     Años_empleado INTEGER
-)
+);
+alter table empleados add column Edificio TEXT;
+select * from empleados
+
 CREATE TABLE EDIFICIOS (
     Nombre_Del_Edificio TEXT PRIMARY key,
     Capacidad INTEGER
-)
+);
 
 INSERT INTO EDIFICIOS (Nombre_Del_Edificio, Capacidad) VALUES ('1e', 24);
 INSERT INTO EDIFICIOS (Nombre_Del_Edificio, Capacidad) VALUES ('1s', 32);
 INSERT INTO EDIFICIOS (Nombre_Del_Edificio, Capacidad) VALUES ('2e', 16);
 INSERT INTO EDIFICIOS (Nombre_Del_Edificio, Capacidad) VALUES ('2w', 20);
 
-INSERT INTO Empleados (Role, Nombre, Edificio, Años_empleado) VALUES ('Ingeniero', 'Becky A.', '1e', 4);
+INSERT INTO Empleados (Role, Nombre, Edificio, Años_empleado) VALUES ('Ingeniero', 'Becky A.','1e', 4);
 INSERT INTO Empleados (Role, Nombre, Edificio, Años_empleado) VALUES ('Ingeniero', 'Dan B.', '1e', 2);
 INSERT INTO Empleados (Role, Nombre, Edificio, Años_empleado) VALUES ('Ingeniero', 'Sharon F.', '1e', 6);
 INSERT INTO Empleados (Role, Nombre, Edificio, Años_empleado) VALUES ('Ingeniero', 'Dan M.', '1e', 4);
