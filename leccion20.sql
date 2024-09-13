@@ -54,3 +54,6 @@ from TAQUILLA T JOIN movie M on T.id_pelicula =M.identificacion
 
 
 
+
+
+
