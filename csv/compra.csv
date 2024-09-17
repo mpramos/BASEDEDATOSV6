@@ -1,0 +1,5 @@
+id_compra,id_cliente,id_producto,cantidad,fecha_compra
+1,1,1,1,2024-09-01
+2,2,2,2,2024-09-05
+3,3,3,1,2024-09-07
+4,4,4,1,2024-09-10

@@ -68,6 +68,37 @@ select titulo,round(clasificacion) as clasificacion_redoneada from Taquilla
     COUNT()
     SUM()
     AVG()
+--! Funciones Especiales Avanzadas
+--* Generar un reporte de ventas por año
+CREATE OR REPLACE FUNCTION reporte_ventas(anio_inicio INTEGER, anio_final INTEGER)
+RETURNS TABLE (titulo TEXT,Ventas BIGINT) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT M.titulo,(T.Ventas_locales + T.Ventas_Internacionales) 
+    from Movie M JOIN Taquilla T on M.identificacion=T.id_pelicula
+END;
+$$LANGUAGE plpgsql;
+
+select * from reporte_ventas(2000,2010)
+--? Ejemplo 2: Función que verifica si una película está disponible en algún edificio.
+CREATE OR REPLACE FUNCTION verificar_disponibilidad_pelicula(p_pelicula_id INTEGER)
+RETURNS BOOLEAN AS $$
+BEGIN
+    return EXISTS (SELECT 1 from movie where identificacion=p_pelicula_id);
+END;
+$$ LANGUAGE plpgsql;
+select verificar_disponibilidad_pelicula(14)
+
+
+
+
+
+
+
+
+
+
+
 
 
 

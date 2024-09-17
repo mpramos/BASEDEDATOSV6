@@ -1,0 +1,5 @@
+id_producto,nombre,precio,id_categoria
+1,Laptop HP,600.0,1
+2,iPhone 12,800.0,2
+3,Teclado Mecánico,50.0,3
+4,Monitor Dell,200.0,4
