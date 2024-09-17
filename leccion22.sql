@@ -125,9 +125,107 @@ DECLARE
 $$ LANGUAGE plpgsql;
 
 
+CREATE OR REPLACE FUNCTION contar_vocales(cadena TEXT)
+RETURNS INTEGER AS $$
+DECLARE 
+    contador INTEGER:=0;
+    letra CHAR;
+BEGIN
+    FOR i IN 1..length(cadena) LOOP
+        letra:= substr(cadena,i,1);
+        IF letra = 'a' OR letra='e' OR letra='i' OR letra='o' OR letra='u' then
+            contador := contador +1;
+        END IF;
+    END LOOP;
+    return contador;
+END;
+$$ LANGUAGE plpgsql;
+
+-- 5!= 5*4*3*2*1 -> 120
+-- 6!= 6*5*4*3*2*1 ->
+CREATE OR REPLACE FUNCTION factorial(n INTEGER)
+RETURNS INTEGER AS $$
+DECLARE 
+    resultado INTEGER :=1;
+BEGIN
+    FOR i IN 1..n LOOP
+        resultado := resultado * i;
+    END LOOP;
+    return resultado;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION suma_pares(n INTEGER)
+RETURNS INTEGER AS $$
+DECLARE 
+        suma INTEGER :=0;
+BEGIN
+    FOR i IN 1..n LOOP
+        IF i%2=0 then
+            suma := suma + i ;
+        END IF;    
+    END LOOP;
+    return resultado;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION suma_pares(n INTEGER)
+RETURNS INTEGER AS $$
+DECLARE 
+        suma INTEGER :=0;
+BEGIN
+    FOR i IN 1..n LOOP
+        IF i%2=0 then
+            suma := suma + i ;
+        END IF;    
+    END LOOP;
+    return resultado;
+END;
+$$ LANGUAGE plpgsql;
+CREATE OR REPLACE FUNCTION dias_entre(f1 DATE,f2 DATE)
+RETURNS INTEGER AS $$
+BEGIN
+    return f2-f1;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION calcular_cuadrado(n INTEGER)
+RETURNS INTEGER AS $$
+BEGIN
+    return n*n;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION suma_de_cuadrados(a INTEGER, b INTEGER)
+RETURNS INTEGER AS $$
+BEGIN
+    return calcular_cuadrado(a) + calcular_cuadrado(b);
+END;
+$$ LANGUAGE plpgsql;
+
+select suma_de_cuadrados(3,4)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- 10-> 30 (2+4+6+8+10)
+-- 12-> 32 (2+4+6+8+10+12)
 
 
 

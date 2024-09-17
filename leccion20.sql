@@ -51,7 +51,23 @@ select M.titulo,es_exitoso(Ventas_locales+Ventas_Internacionales) AS Es_exito
 from TAQUILLA T JOIN movie M on T.id_pelicula =M.identificacion
 
 --? Ejemplo 3: Función para calcular el promedio de ventas locales.
+CREATE OR REPLACE FUNCTION promedio_ventas_locales()
+returns numeric as $$
+    BEGIN
+        RETURN (select avg(Ventas_locales) from TAQUILLA);
+    END;
+$$ LANGUAGE plpgsql;
+--! FUNCIONES INTEGRADAS DEL SISTEMA
+select NOW()
 
+length()
+select titulo,length(titulo) as longitud_titulo from movie
+select titulo,round(clasificacion) as clasificacion_redoneada from Taquilla
+
+--! FUNCIONES AGREGADAS
+    COUNT()
+    SUM()
+    AVG()
 
 
 
