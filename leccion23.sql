@@ -2,10 +2,8 @@
     -- insert
     -- update
     -- delete
-
 --! Row-level vs. Statement-level
 --! Before vs. After Triggers
-
 CREATE TABLE audit_log(
     id serial PRIMARY key,
     old_value TEXT,

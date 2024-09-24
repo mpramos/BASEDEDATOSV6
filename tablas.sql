@@ -88,6 +88,13 @@ INSERT INTO Empleados (Role, Nombre, Edificio, Años_empleado) VALUES ('Gerente'
 INSERT INTO Empleados (Role, Nombre, Edificio, Años_empleado) VALUES ('Gerente', 'Daria O.', '2w', 6);
 INSERT INTO Empleados (Role, Nombre, Edificio, Años_empleado) VALUES ('Gerente', 'Juana O.', NULL, 6);
 
-
-
-
+create table categoria (
+    id_categoria SERIAL PRIMARY KEY,
+    nombre varchar(100)
+);
+create table producto (
+    id_producto SERIAL PRIMARY KEY,
+    nombre varchar(100),
+    precio DECIMAL(10,2),
+    id_categoria INTEGER REFERENCES categoria(id_categoria)
+);
