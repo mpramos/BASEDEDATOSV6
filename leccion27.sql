@@ -52,3 +52,65 @@ insert into detalles_pedido(pedidos_id,product_id,cantidad,precio_unitario) VALU
 (8,9,1,50.00),
 (8,8,1,20.00);
 
+--* Ejemplo: Obtener todos los clientes que hayan hecho pedidos con un monto superior a 1000.
+
+SELECT nombre,email
+FROM clientes
+WHERE cliente_id IN (
+    SELECT cliente_id
+    FROM pedidos
+    where total > 1000)
+--* Ejemplo: Obtener el total de cada cliente agrupado por nombre utilizando una 
+--* subconsulta derivada.
+
+
+SELECT c.nombre,total_pedido.total
+FROM clientes c
+JOIN (
+    SELECT cliente_id, SUM(total) AS total
+    FROM pedidos
+    GROUP BY cliente_id
+) AS total_pedido
+ON c.cliente_id= total_pedido.cliente_id
+
+--* Ejemplo: Mostrar el nombre del cliente junto con el total de pedidos que ha realizado.
+
+SELECT nombre,
+(
+SELECT COUNT(*)
+FROM pedidos
+WHERE pedidos.cliente_id= clientes.cliente_id
+) AS total_pedidos
+FROM clientes;
+
+--? Ejemplo: Listar los productos que aparecen en más de un pedido.
+
+SELECT nombre
+FROM productos p
+WHERE EXISTS (
+    SELECT 1
+    FROM detalles_pedido d
+    WHERE d.product_id = p.productos_id
+    GROUP BY d.product_id
+    HAVING COUNT(*) > 1
+);
+
+--? Ejemplo: Mostrar los clientes cuyos pedidos han sido mayores que cualquier
+--?  otro pedido hecho por otros clientes.
+
+SELECT nombre
+FROM clientes c
+where EXISTS (
+    SELECT 1
+    FROM pedidos p
+    WHERE p.cliente_id=c.cliente_id
+    AND p.total > ANY (
+        SELECT total
+        FROM pedidos
+        WHERE cliente_id != c.cliente_id
+    )
+)
+
+
+
+
